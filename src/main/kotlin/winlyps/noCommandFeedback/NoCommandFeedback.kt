@@ -14,6 +14,9 @@ class NoCommandFeedback : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoCommandFeedback plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("sendCommandFeedback", "true")
+            logger.info("NoCommandFeedback plugin has been disabled.")
+        }
     }
 }
